@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            background-image: url('{{ url_for('static', filename='images/dashboard.webp') }}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffcc00;
+        }
+
+        nav {
+            margin-top: 10px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            background-color: #ff5733;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            background-color: #c70039;
+        }
+
+        main {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            display: inline-block;
+            border-radius: 10px;
+            margin-top: 20px;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        button {
+            padding: 12px;
+            margin: 10px;
+            background-color: #ff5733;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #c70039;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Workout Tracker</h1>
+        <nav>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Welcome, {{ username }}!</h2>
+        <p>Track your workouts and view progress here.</p>
+
+        <!-- Track Workouts -->
+        <form action="{{ url_for('track_workouts') }}" method="GET">
+            <button type="submit">Track Your Workouts</button>
+        </form>
+
+        <!-- View Progress -->
+        <form action="{{ url_for('view_progress') }}" method="GET">
+            <button type="submit">View Progress</button>
+        </form>
+
+        <!-- NEW FEATURES ADDED BELOW -->
+
+        <!-- Achievements -->
+        <form action="{{ url_for('achievements') }}" method="GET">
+            <button type="submit">🏆 Achievements</button>
+        </form>
+
+        <!-- Workout Calendar -->
+        <form action="{{ url_for('workout_calendar') }}" method="GET">
+            <button type="submit">📅 View Calendar</button>
+        </form>
+
+        <!-- Workout Statistics -->
+        <form action="{{ url_for('statistics') }}" method="GET">
+            <button type="submit">📊 View Statistics</button>
+        </form>
+
+        <!-- Workout Streak Tracker -->
+        <form action="{{ url_for('workout_streak') }}" method="GET">
+            <button type="submit">🔥 View Streak</button>
+        </form>
+
+        <!-- Export Workouts -->
+        <form action="{{ url_for('export_workouts') }}" method="GET">
+            <button type="submit">📥 Export Workouts</button>
+        </form>
+
+    </main>
+
+</body>
+</html>
